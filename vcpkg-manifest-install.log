@@ -1,0 +1,115 @@
+Detecting compiler hash for triplet "x64-windows"...
+The following packages will be built and installed:
+  * brotli[core]:x64-windows -> 1.0.9#2
+  * bzip2[core]:x64-windows -> 1.0.8#2
+    curl[core,non-http,schannel,ssl,sspi]:x64-windows -> 7.83.1#2
+    freetype[brotli,bzip2,core,png,zlib]:x64-windows -> 2.12.1
+    libarchive[bzip2,core,libxml2,lz4,lzma,lzo]:x64-windows -> 3.6.1#1
+    libiconv[core]:x64-windows -> 1.17
+    libjpeg-turbo[core]:x64-windows -> 2.1.3#3
+  * liblzma[core]:x64-windows -> 5.2.5#6
+  * libogg[core]:x64-windows -> 1.3.5
+  * libpng[core]:x64-windows -> 1.6.37#18
+    libvorbis[core]:x64-windows -> 1.3.7#2
+  * libxml2[core]:x64-windows -> 2.9.14
+  * lz4[core]:x64-windows -> 1.9.3#3
+  * lzo[core]:x64-windows -> 2.10#7
+    sdl2[core]:x64-windows -> 2.0.22#1
+  * vcpkg-cmake[core]:x64-windows -> 2022-06-07
+  * vcpkg-cmake-config[core]:x64-windows -> 2022-02-06#1
+    zlib[core]:x64-windows -> 1.2.12#1
+Additional packages (*) will be modified to complete this operation.
+Restored 18 packages from C:\Users\Alan\AppData\Local\vcpkg\archives in 23.14 s. Use --debug to see more details.
+Installing 1/18 vcpkg-cmake:x64-windows...
+Elapsed time to handle vcpkg-cmake:x64-windows: 45.66 ms
+Installing 2/18 zlib:x64-windows...
+Elapsed time to handle zlib:x64-windows: 212.8 ms
+Installing 3/18 vcpkg-cmake-config:x64-windows...
+Elapsed time to handle vcpkg-cmake-config:x64-windows: 35 ms
+Installing 4/18 curl:x64-windows...
+Elapsed time to handle curl:x64-windows: 167.1 ms
+Installing 5/18 libpng:x64-windows...
+Elapsed time to handle libpng:x64-windows: 141.5 ms
+Installing 6/18 bzip2:x64-windows...
+Elapsed time to handle bzip2:x64-windows: 71.41 ms
+Installing 7/18 brotli:x64-windows...
+Elapsed time to handle brotli:x64-windows: 161 ms
+Installing 8/18 freetype:x64-windows...
+Elapsed time to handle freetype:x64-windows: 463.4 ms
+Installing 9/18 lzo:x64-windows...
+Elapsed time to handle lzo:x64-windows: 145.1 ms
+Installing 10/18 liblzma:x64-windows...
+Elapsed time to handle liblzma:x64-windows: 185.8 ms
+Installing 11/18 lz4:x64-windows...
+Elapsed time to handle lz4:x64-windows: 106.9 ms
+Installing 12/18 libiconv:x64-windows...
+Elapsed time to handle libiconv:x64-windows: 137.5 ms
+Installing 13/18 libxml2:x64-windows...
+Elapsed time to handle libxml2:x64-windows: 2.267 s
+Installing 14/18 libarchive:x64-windows...
+Elapsed time to handle libarchive:x64-windows: 88.71 ms
+Installing 15/18 libjpeg-turbo:x64-windows...
+Elapsed time to handle libjpeg-turbo:x64-windows: 162.3 ms
+Installing 16/18 libogg:x64-windows...
+Elapsed time to handle libogg:x64-windows: 74.2 ms
+Installing 17/18 libvorbis:x64-windows...
+Elapsed time to handle libvorbis:x64-windows: 133.3 ms
+Installing 18/18 sdl2:x64-windows...
+Elapsed time to handle sdl2:x64-windows: 439.1 ms
+
+Total elapsed time: 34.62 s
+
+The package zlib is compatible with built-in CMake targets:
+
+    find_package(ZLIB REQUIRED)
+    target_link_libraries(main PRIVATE ZLIB::ZLIB)
+
+curl provides CMake targets:
+    # this is heuristically generated, and may not be correct
+    find_package(CURL CONFIG REQUIRED)
+    target_link_libraries(main PRIVATE CURL::libcurl)
+
+freetype provides CMake targets:
+    # this is heuristically generated, and may not be correct
+    find_package(freetype CONFIG REQUIRED)
+    target_link_libraries(main PRIVATE freetype)
+
+The package libiconv provides CMake targets:
+
+    find_package(Iconv)
+    target_link_libraries(main PRIVATE Iconv::Iconv)
+
+The package libarchive is compatible with the CMake Find Module:
+
+    find_package(LibArchive REQUIRED)
+    target_include_directories(main PRIVATE ${LibArchive_INCLUDE_DIRS})
+    target_link_libraries(main PRIVATE ${LibArchive_LIBRARIES})
+
+    find_package(LibArchive REQUIRED)
+    target_link_libraries(main PRIVATE LibArchive::LibArchive) # CMake >= 3.17
+
+The package libjpeg-turbo is compatible with built-in CMake targets:
+
+    find_package(JPEG REQUIRED)
+    target_link_libraries(main PRIVATE ${JPEG_LIBRARIES})
+    target_include_directories(main PRIVATE ${JPEG_INCLUDE_DIR})
+
+The package libvorbis provides CMake targets:
+
+    # Vorbis reference encoder and decoder, low-level API
+    find_package(Vorbis CONFIG REQUIRED)
+    target_link_libraries(main PRIVATE Vorbis::vorbis)
+
+    # Audio stream decoding and basic manipulation, high-level API
+    find_package(Vorbis CONFIG REQUIRED)
+    target_link_libraries(main PRIVATE Vorbis::vorbisfile)
+
+    # Convenience API for setting up an encoding environment
+    find_package(Vorbis CONFIG REQUIRED)
+    target_link_libraries(main PRIVATE Vorbis::vorbisenc)
+
+sdl2 provides CMake targets:
+    # this is heuristically generated, and may not be correct
+    find_package(SDL2 CONFIG REQUIRED)
+    target_link_libraries(main PRIVATE SDL2::SDL2 SDL2::SDL2main)
+
